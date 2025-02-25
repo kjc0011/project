@@ -1,0 +1,20 @@
+.attendance button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+}
+
+.attendance button:hover {
+    background: #0056b3;
+}
+
+.notice-board {
+    width: 45%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+

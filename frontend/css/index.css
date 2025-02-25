@@ -1,0 +1,390 @@
+/* 전체 페이지 스타일 */
+body, html {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F0F4FF;
+    color: #333333;
+    height: 100vh; /* 화면 높이에 맞춤 */
+    overflow: hidden; /* 스크롤 방지 */
+}
+
+/* 메인 컨테이너 */
+.container {
+    display: flex;
+    height: 60%;
+    justify-content: space-between;
+    padding: 120px 50px;
+}
+
+/* 네비게이션 바 */
+.navbar {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 80px;
+}
+
+/* 로고 */
+.logo img {
+    width: 70px;
+    padding-left: 20px;
+}
+
+/* 네비게이션 메뉴 */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    padding: 10px 50px;
+    text-decoration: none;
+    color: #435373;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #B6C5F2;
+}
+
+/* 로그인 & 회원가입 버튼 */
+.auth-buttons {
+    display: flex;
+    padding-right: 50px;
+    gap: 10px;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.auth-buttons .login {
+    background-color: transparent;
+    color: #435373;
+    border: 1px solid #435373;
+}
+
+.auth-buttons .register {
+    background-color: #435373;
+    color: white;
+}
+
+.auth-buttons a:hover {
+    background-color: #456EBF;
+    color: white;
+}
+
+/* 왼쪽 (오늘의 날짜 & 달력) */
+.left-section {
+    width: 50%;
+    margin: 0px 15px 0px 0px;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* 오른쪽 출석 현황 */
+.right-section {
+    width: 50%;
+    margin: 0px 0px 0px 15px;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* 출석 진행 바 */
+.progress-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.progress-container p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #B6C5F2;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    padding: 0px 5px;
+    background: #456EBF;
+    text-align: right;
+    line-height: 30px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: width 0.5s ease-in-out;
+}
+
+/* 출석 버튼 */
+.attendance button {
+    padding: 12px 25px;
+    background-color: #456EBF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.attendance button:hover {
+    background-color: #435373;
+    box-shadow: none;
+}
+
+.attendance button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 공지사항 스타일 */
+.notice {
+    margin-top: 60px;
+    padding: 15px;
+    background-color: #F0F4FF;
+    border-radius: 10px;
+    border: 2px solid #B6C5F2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notice h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #435373;
+    display: flex;
+    align-items: center;
+}
+
+/* 달력 스타일 */
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+p.today-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #435373;
+}
+
+.calendar-table td {
+    width: 14%;
+    text-align: center;
+    padding: 12px 12px 36px 12px;
+    border: 1px solid #ddd;
+}
+
+.calendar-table th {
+    background-color: #456EBF;
+    padding: 12px;
+    color: white;
+}
+
+/* 오늘 날짜 강조 */
+.highlight-today {
+    background-color: #ddd !important;
+    color: #456EBF;
+    font-weight: bold;
+}
+
+/* 출석한 날짜 강조 */
+.attended {
+    background-color: #B6C5F2 !important;
+    color: #456EBF;
+    font-weight: bold;
+}
+
+/* 공지사항 스타일 */
+.notice {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #F0F4FF;
+    border-radius: 10px;
+    border: 2px solid #B6C5F2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nt {
+    display: flex;
+}
+
+/* 공지사항 제목 */
+.notice h3.notice-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #435373;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.notice h3.notice-subtitle {
+    font-size: 16px;
+    color: #777;
+    align-items: center;
+    margin: 21px 0px 10px 10px;
+    margin-top: 21px;
+    margin-bottom: 10px;
+}
+
+/* 공지사항 리스트 */
+.notice-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto; /* 스크롤 가능 */
+}
+
+/* 공지사항 개별 항목 */
+.notice-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.notice-list li:hover {
+    background-color: #E0E8FF;
+}
+
+/* 공지사항 카테고리 */
+.notice-list .category {
+    font-weight: bold;
+    color: #435373;
+    margin-right: 8px;
+}
+
+/* 공지사항 링크 */
+.notice-list li a {
+    text-decoration: none;
+    color: #333;
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.notice-list li a:hover {
+    color: #456EBF;
+}
+
+/* 공지사항 날짜 */
+.notice-date {
+    font-size: 14px;
+    color: #777;
+}
+
+/* 중요 공지사항 배지 */
+.notice-badge {
+    background-color: #456EBF;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+/* 반응형 스타일 */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .left-section, .right-section {
+        width: 90%;
+        margin-bottom: 20px;
+        height: auto;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .auth-buttons {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .auth-buttons {
+        justify-content: center;
+    }
+
+    .progress-bar {
+        height: 20px;
+    }
+
+    .progress-fill {
+        line-height: 20px;
+    }
+
+    .attendance button {
+        width: 100%;
+        font-size: 14px;
+    }
+}
