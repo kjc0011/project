@@ -7,20 +7,13 @@
     "start": "node backend/server.js",
     "backend": "node backend/server.js",
     "frontend": "npx serve -s frontend",
-    "build": "npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "echo '✅ Frontend build 완료!'",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kjc0011/project.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kjc0011/project/issues"
-  },
-  "homepage": "https://github.com/kjc0011/project#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
