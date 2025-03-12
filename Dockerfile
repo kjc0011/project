@@ -19,4 +19,4 @@ ENV PORT=5000
 ENV NODE_ENV=production
 
 # Step 7: 백엔드 실행 (정적 파일 제공)
-CMD ["node", "backend/server.js"]
+CMD ["npm", "run", "backend"]

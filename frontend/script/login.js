@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
             if (response.ok) {
                 alert("로그인 성공!");
-                window.location.href = "../index.html"; // ✅ 로그인 성공 후 index.html로 이동!
+                window.location.href = "menu/login.html"; // ✅ 로그인 성공 후 login(index.html)로 이동!
             } else {
                 alert(`❌ 오류: ${data.message}`); // 로그인 실패 시 오류 메시지 출력
             }
@@ -36,4 +36,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
   });
-  

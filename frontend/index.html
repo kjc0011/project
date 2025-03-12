@@ -3,91 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회사 출석 시스템</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/index.css">
+    <title>로그인</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-
-    <!-- 네비게이션 바 -->
-    <header class="navbar">
-        <div class="logo">
-            <img src="img/icon.png" alt=""/>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">업무 소개</a></li>
-                <li><a href="#">채용 소개</a></li>
-                <li><a href="#">채용 공고</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <a href="#" class="login">My page</a>
-            <a href="menu/login.html" class="register">로그아웃</a>
-        </div>
-    </header>
-
-    <!-- 메인 컨테이너 -->
     <div class="container">
-        <!-- 왼쪽 (오늘의 날짜 & 달력) -->
-        <div class="left-section">
-            <p class="today-text" id="currentDate"></p>
-            <div id="calendar"></div>
-        </div>
-
-        <!-- 오른쪽 (출석 현황 + 공지사항) -->
-        <div class="right-section">
-            <h2>출석 현황</h2>
-
-            <!-- 출석 진행 바 -->
-            <div class="progress-container">
-                <p>출석 진행률: <span id="progress-percent">0%</span></p>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
+        <div class="login-box">
+            <div class="login-header">
+                <img src="img/icon.png" alt="HS 로고" class="logo">
+                <h2>로그인</h2>
+            </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">아이디</label>
+                    <input type="text" id="username" placeholder="아이디를 입력하세요" required>
                 </div>
-            </div>
-
-            <!-- 출석 버튼 -->
-            <div class="attendance">
-                <button id="attendance-btn"><span id="attendance-date"></span> 출석하기</button>
-            </div>
-
-            <!-- 공지사항 -->
-            <div class="notice">
-                <div class="nt">
-                    <h3 class="notice-title">공지사항</h3>
-                    <h3 class="notice-subtitle">| 회사 공지사항</h3>
+                <div class="input-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="비밀번호를 입력하세요" required>
                 </div>
-                </h3>
-                <hr class="divider">
-                <ul class="notice-list">
-                    <li>
-                        <span class="category">[인사팀]</span>
-                        <a href="#">5월 사내행사 일정 안내</a>
-                        <span class="notice-badge">N</span>
-                        <span class="notice-date">2024.02.24</span>
-                    </li>
-                    <li>
-                        <span class="category">[교육팀]</span>
-                        <a href="#">교육 사업 개발[교육사업팀] 채용 공고</a>
-                        <span class="notice-badge">N</span>
-                        <span class="notice-date">2024.02.20</span>
-                    </li>
-                    <li>
-                        <span class="category">[기획팀]</span>
-                        <a href="#">2024년 3월 운영 일정 관리</a>
-                        <span class="notice-date">2024.02.18</span>
-                    </li>
-                    <li>
-                        <span class="category">[총무팀]</span>
-                        <a href="#">복리후생 혜택 변경 안내</a>
-                        <span class="notice-date">2024.02.15</span>
-                    </li>
-                </ul>
-            </div>
+                <button type="submit" class="login-btn">로그인</button>
+            </form>
+            <p class="register-link">아직 계정이 없나요? <a href="menu/register.html">회원가입</a></p>
         </div>
     </div>
 
-    <script src="script/index.js"></script> 
+    <script src="script/login.js"></script>
 </body>
 </html>
