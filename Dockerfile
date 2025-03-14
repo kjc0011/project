@@ -4,16 +4,16 @@ FROM node:16
 # Step 2: 작업 디렉토리 설정
 WORKDIR /app
 
-# Step 3: package.json 복사 및 의존성 설치
+# Step 3: package.json, package-lock.json 복사 및 의존성 설치
 COPY package.json package-lock.json ./
-RUN npm install --unsafe-perm  # 권한 문제 해결
+RUN npm install --omit=dev --unsafe-perm  # 개발 의존성 제외하고 설치
 
-# Step 4: 프론트엔드 코드 복사
+# Step 4: 프론트엔드 코드 복사 및 설치
 COPY frontend ./frontend
 WORKDIR /app/frontend
-RUN npm install --unsafe-perm  # frontend npm 패키지 설치
+RUN npm install --omit=dev --unsafe-perm  # 개발 의존성 제외하고 설치
 
-# Step 5: 백엔드 코드 복사
+# Step 5: 백엔드 코드 복사 및 실행 준비
 WORKDIR /app
 COPY backend ./backend
 

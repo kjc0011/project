@@ -13,6 +13,6 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use("/api/auth", authRoutes);
 
-app.listen(5000, () => {
+app.listen(5000, '0.0.0.0', () => {
     console.log("✅ 서버 실행 중! 포트: 5000 (테스트 모드)");
 });
