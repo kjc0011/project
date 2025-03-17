@@ -8,19 +8,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// ✅ 프론트엔드 정적 파일 제공 (Docker에서도 인식 가능하게 수정)
-app.use(express.static(path.resolve(__dirname, "..", "frontend")));
-
-// ✅ 기본 페이지(index.html) 응답 설정
-app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "..", "frontend", "index.html"));
-});
+// ✅ 프론트엔드 정적 파일 제공 (이 부분 추가)
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use("/api/auth", authRoutes);
 
-// ✅ 포트 변경 (8080으로 통일)
-const PORT = process.env.PORT || 8080;  
-
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`✅ 서버 실행 중! 포트: ${PORT}`);
+app.listen(5000, '0.0.0.0', () => {
+    console.log("✅ 서버 실행 중! 포트: 5000 (테스트 모드)");
 });
