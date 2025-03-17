@@ -8,8 +8,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// ✅ 프론트엔드 정적 파일 제공
-app.use(express.static(path.join(__dirname, "../frontend")));
+// ✅ 프론트엔드 정적 파일 제공 (Docker에서도 인식 가능하게 수정)
+app.use(express.static(path.resolve(__dirname, "..", "frontend")));
+
+// ✅ 기본 페이지(index.html) 응답 설정
+app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "..", "frontend", "index.html"));
+});
 
 app.use("/api/auth", authRoutes);
 
