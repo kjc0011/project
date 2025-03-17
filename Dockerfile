@@ -11,19 +11,15 @@ RUN npm install --omit=dev --unsafe-perm  # 개발 의존성 제외하고 설치
 # Step 4: 프론트엔드 코드 복사 및 설치
 COPY frontend ./frontend
 WORKDIR /app/frontend
-RUN npm install --omit=dev --unsafe-perm
+RUN npm install --omit=dev --unsafe-perm  # 개발 의존성 제외하고 설치
 
 # Step 5: 백엔드 코드 복사 및 실행 준비
 WORKDIR /app
 COPY backend ./backend
 
 # Step 6: 환경 변수 설정
-ENV PORT=8080
+ENV PORT=5000
 ENV NODE_ENV=production
 
-# Step 7: 컨테이너가 사용할 포트 설정
-EXPOSE 8080  
-
-# Step 8: 백엔드 실행 (8080 포트 사용)
-WORKDIR /app/backend
-CMD ["node", "server.js"]
+# Step 7: 백엔드 실행
+CMD ["npm", "run", "backend"]
