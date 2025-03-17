@@ -18,10 +18,8 @@ WORKDIR /app
 COPY backend ./backend
 
 # Step 6: 환경 변수 설정
-ENV PORT=8080
+ENV PORT=5000
 ENV NODE_ENV=production
 
 # Step 7: 백엔드 실행
-CMD ["npm", "start"]
-
-
+CMD ["npm", "run", "backend"]
