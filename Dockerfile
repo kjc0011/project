@@ -21,6 +21,6 @@ COPY backend ./backend
 ENV PORT=5000
 ENV NODE_ENV=production
 
-# Step 7: 백엔드 실행 (수동 실행 가능하도록 변경)
+# Step 7: 기본 실행을 Bash로 변경 (Node.js 자동 실행 방지)
 WORKDIR /app/backend
-CMD ["node", "server.js"]
+CMD ["bash"]
