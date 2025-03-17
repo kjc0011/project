@@ -21,5 +21,6 @@ COPY backend ./backend
 ENV PORT=5000
 ENV NODE_ENV=production
 
-# Step 7: 백엔드 실행
-CMD ["npm", "run", "backend"]
+# Step 7: 백엔드 실행 (수동 실행 가능하도록 변경)
+WORKDIR /app/backend
+CMD ["node", "server.js"]
