@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.use("/api/auth", authRoutes);
 
-app.listen(5000, '0.0.0.0', () => {
-    console.log("✅ 서버 실행 중! 포트: 5000 (테스트 모드)");
+const PORT = process.env.PORT || 5000;  // ✅ 5000번 포트 사용
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`✅ 서버 실행 중! 포트: ${PORT}`);
 });

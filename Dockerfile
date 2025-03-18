@@ -19,7 +19,7 @@ COPY backend ./backend
 
 # Step 6: 환경 변수 설정
 ENV PORT=5000
-ENV NODE_ENV=production
+EXPOSE 5000
 
 # Step 7: 백엔드 실행
-CMD ["npm", "run", "backend"]
+CMD ["node", "backend/server.js"]
