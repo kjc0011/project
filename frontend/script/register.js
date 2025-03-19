@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("📢 [클라이언트 요청] 회원가입 요청:", { username, email, password });
 
         try {
-            const response = await fetch("http://localhost:5000/api/auth/register", {
+            // ✅ OpenShift Route 주소 사용!
+            const API_BASE_URL = "http://myapp-route-kyh-test-project.apps.demo01.ocp4lab.com";
+
+            const response = await fetch(`${API_BASE_URL}/api/auth/register`, {  // 🚀 API 경로 추가!
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
