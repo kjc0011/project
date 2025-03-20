@@ -15,16 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("📢 [클라이언트 요청] 회원가입 요청:", { username, email, password });
 
-        // ✅ OpenShift & AWS API 주소 설정
+        // ✅ OpenShift & AWS API 주소 설정 (배열)
         const API_BASE_URLS = [
-            "http://cicd-route-hspark.apps.ocp4.xndks.xyz",  // OpenShift
-            "new-test-alb-543931512.ap-northeast-2.elb.amazonaws.com"  // AWS
+            "http://cicd-route-hspark.apps.ocp4.xndks.xyz",   // OpenShift
+            "http://new-test-alb-543931512.ap-northeast-2.elb.amazonaws.com" // AWS
         ];
 
         try {
-            // OpenShift & AWS 동시에 요청
+            // ✅ OpenShift & AWS에 각각 요청 보내기
             const fetchPromises = API_BASE_URLS.map(baseUrl =>
-                fetch(`${baseUrl}/api/auth/register`, {
+                fetch(`${baseUrl}/api/auth/register`, { // 🔥 URL이 개별적으로 인식되도록 수정!
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ username, email, password }),
@@ -36,12 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
             );
 
-            // ✅ 먼저 응답한 서버 사용 (Promise.race)
+            // ✅ `Promise.race()`를 사용해 먼저 응답 온 서버의 결과를 사용!
             const data = await Promise.race(fetchPromises);
             console.log("📢 [서버 응답] 회원가입 결과:", data);
 
             if (data.message) {
-                alert(data.message); // ✅ 회원가입 성공 메시지 표시
+                alert("✅ 회원가입 성공!\n" + data.message);
                 window.location.href = "login.html"; // ✅ 로그인 페이지로 이동
             } else {
                 alert("❌ 회원가입 실패: 응답 데이터가 올바르지 않습니다.");

@@ -14,16 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("📢 [클라이언트 요청] 로그인 요청:", { username, password });
 
-        // OpenShift & AWS API 경로 설정
+        // ✅ OpenShift & AWS API URL 올바르게 설정 (배열)
         const API_BASE_URLS = [
-            "http://cicd-route-hspark.apps.ocp4.xndks.xyz",  // OpenShift
-            "new-test-alb-543931512.ap-northeast-2.elb.amazonaws.com" // AWS
+            "http://cicd-route-hspark.apps.ocp4.xndks.xyz",   // OpenShift
+            "http://new-test-alb-543931512.ap-northeast-2.elb.amazonaws.com" // AWS
         ];
 
         try {
-            // OpenShift와 AWS API에 동시에 요청을 보냄
-            const fetchPromises = API_BASE_URLS.map(baseUrl =>
-                fetch(`${baseUrl}/api/auth/login`, {
+            // ✅ OpenShift & AWS API에 각각 개별 요청 보내기
+            const fetchPromises = API_BASE_URLS.map(baseUrl => 
+                fetch(`${baseUrl}/api/auth/login`, {  // 🔥 각 URL을 개별적으로 요청!
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ username, password }),
@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
             );
 
-            // 먼저 응답을 받은 API의 데이터를 사용
+            // ✅ `Promise.race()` 사용: 가장 빠른 서버 응답 사용
             const data = await Promise.race(fetchPromises);
             console.log("📢 [서버 응답] 로그인 결과:", data);
 
             if (data.token) {
-                alert("로그인 성공!");
+                alert("✅ 로그인 성공!");
                 localStorage.setItem("authToken", data.token); // ✅ JWT 토큰 저장 (옵션)
                 window.location.href = "menu/login.html"; // ✅ 로그인 성공 후 페이지 이동
             } else {
