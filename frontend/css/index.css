@@ -1,3 +1,13 @@
+/* 전체 스크롤바 숨기기 */
+::-webkit-scrollbar {
+    display: none; /* 크롬, 사파리에서 스크롤바 숨김 */
+}
+
+.left-section, .right-section {
+    scrollbar-width: none; /* 파이어폭스에서 스크롤바 숨김 */
+    -ms-overflow-style: none; /* 인터넷 익스플로러에서 스크롤바 숨김 */
+}
+
 /* 전체 페이지 스타일 */
 body, html {
     font-family: 'Pretendard', sans-serif;
@@ -200,6 +210,40 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
+/* 달력 헤더 부분 */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+.calendar-title {
+    width: 80%;
+}
+
+.calendar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.calendar-btn > button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #435373;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.calendar-btn button:hover {
+    color: #456EBF;
+}
+
 p.today-text {
     font-size: 30px;
     font-weight: bold;
@@ -235,7 +279,7 @@ p.today-text {
 
 /* 공지사항 스타일 */
 .notice {
-    margin-top: 20px;
+    margin-top: 60px;
     padding: 20px;
     background-color: #F0F4FF;
     border-radius: 10px;
@@ -373,7 +417,7 @@ p.today-text {
 
     .auth-buttons {
         justify-content: center;
-    }
+    } 
 
     .progress-bar {
         height: 20px;

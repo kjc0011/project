@@ -12,7 +12,7 @@
     <!-- 네비게이션 바 -->
     <header class="navbar">
         <div class="logo">
-            <img src="../img/icon.png" alt=""/>
+            <img src="../img/icon.png" alt="로고">
         </div>
         <nav>
             <ul>
@@ -31,7 +31,17 @@
     <div class="container">
         <!-- 왼쪽 (오늘의 날짜 & 달력) -->
         <div class="left-section">
-            <p class="today-text" id="currentDate"></p>
+            <div class="calendar-header">
+       <div class="calendar-btn">
+           <button id="prev-month">◀</button>
+        </div>
+                <div class="calendar-title">
+           <p class="today-text" id="currentDate"></p>
+       </div>
+       <div class="calendar-btn">
+           <button id="next-month">▶</button>
+       </div>    
+            </div>
             <div id="calendar"></div>
         </div>
 
@@ -58,31 +68,12 @@
                     <h3 class="notice-title">공지사항</h3>
                     <h3 class="notice-subtitle">| 회사 공지사항</h3>
                 </div>
-                </h3>
                 <hr class="divider">
                 <ul class="notice-list">
-                    <li>
-                        <span class="category">[인사팀]</span>
-                        <a href="login.html">5월 사내행사 일정 안내</a>
-                        <span class="notice-badge">N</span>
-                        <span class="notice-date">2025.02.24</span>
-                    </li>
-                    <li>
-                        <span class="category">[교육팀]</span>
-                        <a href="login.html">교육 사업 개발[교육사업팀] 채용 공고</a>
-                        <span class="notice-badge">N</span>
-                        <span class="notice-date">2025.02.20</span>
-                    </li>
-                    <li>
-                        <span class="category">[기획팀]</span>
-                        <a href="login.html">2024년 3월 운영 일정 관리</a>
-                        <span class="notice-date">2025.02.18</span>
-                    </li>
-                    <li>
-                        <span class="category">[총무팀]</span>
-                        <a href="login.html">복리후생 혜택 변경 안내</a>
-                        <span class="notice-date">2025.02.15</span>
-                    </li>
+                    <li><span class="category">[인사팀]</span> <a href="#">5월 사내행사 일정 안내</a> <span class="notice-badge">N</span> <span class="notice-date">2025.02.24</span></li>
+                    <li><span class="category">[교육팀]</span> <a href="#">교육 사업 개발 채용 공고</a> <span class="notice-badge">N</span> <span class="notice-date">2025.02.20</span></li>
+                    <li><span class="category">[기획팀]</span> <a href="#">2024년 3월 운영 일정 관리</a> <span class="notice-date">2025.02.18</span></li>
+                    <li><span class="category">[총무팀]</span> <a href="#">복리후생 혜택 변경 안내</a> <span class="notice-date">2025.02.15</span></li>
                 </ul>
             </div>
         </div>

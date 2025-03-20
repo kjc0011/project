@@ -1,73 +1,88 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 오늘 날짜 표시
-    const today = new Date();
-    const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1).toString().padStart(2, "0") + "/" + today.getDate().toString().padStart(2, "0");
-    document.getElementById("currentDate").textContent = formattedDate;
-    document.getElementById("attendance-date").textContent = formattedDate;
+    let today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
 
-    // 출석 버튼 및 진행률 바
+    const calendarContainer = document.getElementById("calendar");
+    const currentDateText = document.getElementById("currentDate");
+    const prevMonthBtn = document.getElementById("prev-month");
+    const nextMonthBtn = document.getElementById("next-month");
     const attendanceBtn = document.getElementById("attendance-btn");
     const progressFill = document.getElementById("progress-fill");
     const progressPercent = document.getElementById("progress-percent");
 
     let attendanceCount = 0;
-    const totalDays = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate(); // 이번 달 총 일수
-    let isAttended = false; // 출석 여부 체크
+    let isAttended = false;
 
+    // ✅ 출석 버튼 클릭 이벤트
     attendanceBtn.addEventListener("click", function () {
         if (isAttended) {
             alert("이미 출석 완료되었습니다!");
             return;
         }
-
-        if (attendanceCount < totalDays) {
-            attendanceCount++;
-            let progress = (attendanceCount / totalDays) * 100;
-            progressFill.style.width = progress + "%";
-            progressFill.textContent = Math.round(progress) + "%";
-            progressPercent.textContent = Math.round(progress) + "%";
-
-            alert("출석이 완료되었습니다!");
-            isAttended = true;
-            attendanceBtn.disabled = true;
-
-            markAttendance(today.getDate()); // ✅ 출석한 날짜 강조
-        } else {
-            alert("이번 달 출석이 완료되었습니다!");
-        }
+        attendanceCount++;
+        let progress = (attendanceCount / 30) * 100;
+        progressFill.style.width = progress + "%";
+        progressPercent.textContent = Math.round(progress) + "%";
+        alert("출석이 완료되었습니다!");
+        isAttended = true;
+        attendanceBtn.disabled = true;
+        markAttendance(today.getDate());
     });
 
+    // ✅ 이전 달 보기 버튼
+    prevMonthBtn.addEventListener("click", function () {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        updateCalendar();
+    });
+
+    // ✅ 다음 달 보기 버튼
+    nextMonthBtn.addEventListener("click", function () {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        updateCalendar();
+    });
+
+    // ✅ 달력 업데이트 함수
+    function updateCalendar() {
+    let today = new Date(); // 현재 날짜 가져오기
+    let formattedDate = `${currentYear} / ${(currentMonth + 1).toString().padStart(2, "0")} / ${today.getDate().toString().padStart(2, "0")}`;
+    
+    currentDateText.textContent = formattedDate;
+    createCalendar(currentYear, currentMonth);
+}
+
     // ✅ 달력 생성 함수
-    function createCalendar() {
-        const calendarContainer = document.getElementById("calendar");
-        const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate(); // 이번 달 총 일수
+    function createCalendar(year, month) {
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        let firstDay = new Date(year, month, 1).getDay();
         let calendarHTML = "<table class='calendar-table'><tr>";
 
-        // 요일 헤더 추가
         const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
         for (let day of daysOfWeek) {
             calendarHTML += `<th>${day}</th>`;
         }
         calendarHTML += "</tr><tr>";
 
-        // 1일이 무슨 요일인지 확인
-        const firstDay = new Date(today.getFullYear(), today.getMonth(), 1).getDay();
         for (let i = 0; i < firstDay; i++) {
             calendarHTML += "<td></td>";
         }
 
-        // 날짜 추가
         for (let day = 1; day <= daysInMonth; day++) {
             if ((firstDay + day - 1) % 7 === 0) {
-                calendarHTML += "</tr><tr>"; // 새로운 주 시작
+                calendarHTML += "</tr><tr>";
             }
 
-            // ✅ 오늘 날짜인지 확인해서 강조
-            let todayClass = (day === today.getDate()) ? "highlight-today" : "";
-
+            let todayClass = (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) ? "highlight-today" : "";
             calendarHTML += `<td class="calendar-day ${todayClass}" data-day="${day}">${day}</td>`;
         }
-
         calendarHTML += "</tr></table>";
         calendarContainer.innerHTML = calendarHTML;
     }
@@ -77,11 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const dayCells = document.querySelectorAll(".calendar-day");
         dayCells.forEach(cell => {
             if (parseInt(cell.dataset.day) === day) {
-                cell.classList.add("attended"); // 출석한 날짜 강조
+                cell.classList.add("attended");
             }
         });
     }
 
-    // ✅ 달력 생성 실행
-    createCalendar();
+    updateCalendar();
 });
