@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             // ✅ OpenShift Route 주소 사용!
-            const API_BASE_URL = "http://myapp-route-kyh-test-project.apps.demo01.ocp4lab.com";
+            const API_BASE_URL = "http://cicd-route-hspark.apps.ocp4.xndks.xyz";
 
             const response = await fetch(`${API_BASE_URL}/api/auth/register`, {  // 🚀 API 경로 추가!
                 method: "POST",

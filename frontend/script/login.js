@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("📢 [클라이언트 요청] 로그인 요청:", { username, password });
 
         try {
-            const API_BASE_URL = "http://myapp-route-kyh-test-project.apps.demo01.ocp4lab.com";  // ✅ OpenShift Route 주소 사용!
+            const API_BASE_URL = "http://cicd-route-hspark.apps.ocp4.xndks.xyz";  // ✅ OpenShift Route 주소 사용!
             const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
